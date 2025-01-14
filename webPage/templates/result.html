@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+
+
+        <h2>Extracted Frames</h2>
+        <div class="image-gallery">
+            {% for frame in extracted_frames %}
+                <div class="image-item">
+                    <img src="{{ url_for('static', filename='extracted_frames/' + frame) }}" alt="Extracted Frame">
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Cropped Faces</h2>
+        <div class="image-gallery">
+            {% for face in cropped_faces %}
+                <div class="image-item">
+                    <img src="{{ url_for('static', filename='extracted_faces/' + face) }}" alt="Cropped Face">
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="result">
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+            <p><strong>Model Used:</strong> {{ model_choice }}</p>
+        </div>
+
+        <a href="/">Analyze Another Video</a>
+    </div>
+</body>
+</html>
